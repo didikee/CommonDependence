@@ -17,8 +17,25 @@
         android:orientation="vertical"
         >
         <Button
-            android:id="@+id/share"
-            android:text="share"
+            android:id="@+id/share_1"
+            android:text="share default"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/share_2"
+            android:text="share with bottomSheets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/toast_1"
+            android:text="toast with theme color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/toast_2"
+            android:text="toast with custom color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <Button

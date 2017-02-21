@@ -1,11 +1,14 @@
 package com.didikee.commondependence;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
 
 import com.didikee.dependence.share.AndroidShareHelper;
+import com.didikee.dependence.toast.UIToast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -13,12 +16,18 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.share)
-    Button share;
     @BindView(R.id.activity_main)
     ScrollView activityMain;
     @BindView(R.id.about)
     Button about;
+    @BindView(R.id.toast_1)
+    Button toast1;
+    @BindView(R.id.toast_2)
+    Button toast2;
+    @BindView(R.id.share_1)
+    Button share1;
+    @BindView(R.id.share_2)
+    Button share2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +36,29 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.share)
-    public void share() {
-        // 分享
-        AndroidShareHelper shareHelper =new AndroidShareHelper();
-        shareHelper.shareWithBottomSheets(this,R.layout
-                .layout_bottomsheetsdialog,shareHelper.getShareTextIntent("你好","www.baidu.com/"));
-//        shareHelper.shareDefaultText(this,"fenx sds ","title","content");
-
-    }
-
-
-
     @OnClick(R.id.about)
     public void about() {
+    }
+
+    @OnClick({R.id.toast_1, R.id.toast_2,R.id.share_1,R.id.share_2})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.share_1:
+                // 分享
+                AndroidShareHelper shareHelper1 = new AndroidShareHelper();
+                shareHelper1.shareDefaultText(this,"默认分享标题","title","content");
+                break;
+            case R.id.share_2:
+                AndroidShareHelper shareHelper2 = new AndroidShareHelper();
+                shareHelper2.shareWithBottomSheets(this, R.layout
+                        .layout_bottomsheetsdialog, shareHelper2.getShareTextIntent("默认分享标题", "www.baidu.com/"));
+                break;
+            case R.id.toast_1:
+                UIToast.showToast(this, "Toast with theme color");
+                break;
+            case R.id.toast_2:
+                UIToast.showToast(this, "Toast with custom color", true, Color.GREEN, Color.RED);
+                break;
+        }
     }
 }

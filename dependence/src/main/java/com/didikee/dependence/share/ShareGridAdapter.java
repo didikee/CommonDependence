@@ -2,10 +2,13 @@ package com.didikee.dependence.share;
 
 import android.support.v7.view.menu.ActionMenuItem;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.didikee.dependence.R;
@@ -53,6 +56,36 @@ public class ShareGridAdapter extends RecyclerView.Adapter<ShareGridAdapter.View
                 }
             }
         });
+        int location = position % 3;
+        if ( location == 0){
+            // left
+            holder.llContainer.setLayoutParams(getFrameLayoutParams(true));
+            return;
+        }
+        if (location == 1){
+            // center
+            holder.llContainer.setLayoutParams(getFrameLayoutParams(null));
+            return;
+        }
+        if (location == 2){
+            // right
+            holder.llContainer.setLayoutParams(getFrameLayoutParams(false));
+            return;
+        }
+    }
+
+    private FrameLayout.LayoutParams getFrameLayoutParams(Boolean left){
+        FrameLayout.LayoutParams params =new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        if (left == null){
+            params.gravity = Gravity.CENTER;
+            return params;
+        }
+        if (left){
+            params.gravity = Gravity.LEFT|Gravity.CENTER_VERTICAL;
+        }else {
+            params.gravity = Gravity.RIGHT|Gravity.CENTER_VERTICAL;
+        }
+        return params;
     }
 
     @Override
@@ -63,11 +96,13 @@ public class ShareGridAdapter extends RecyclerView.Adapter<ShareGridAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView icon;
         TextView text;
+        LinearLayout llContainer;
 
         public ViewHolder(View itemView) {
             super(itemView);
             icon = (ImageView) itemView.findViewById(R.id.icon);
             text = (TextView) itemView.findViewById(R.id.text);
+            llContainer = (LinearLayout) itemView.findViewById(R.id.ll_container);
         }
     }
 }
