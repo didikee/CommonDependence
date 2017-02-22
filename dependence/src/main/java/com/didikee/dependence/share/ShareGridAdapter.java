@@ -56,22 +56,22 @@ public class ShareGridAdapter extends RecyclerView.Adapter<ShareGridAdapter.View
                 }
             }
         });
-        int location = position % 3;
-        if ( location == 0){
-            // left
-            holder.llContainer.setLayoutParams(getFrameLayoutParams(true));
-            return;
-        }
-        if (location == 1){
-            // center
-            holder.llContainer.setLayoutParams(getFrameLayoutParams(null));
-            return;
-        }
-        if (location == 2){
-            // right
-            holder.llContainer.setLayoutParams(getFrameLayoutParams(false));
-            return;
-        }
+//        int location = position % 3;
+//        if ( location == 0){
+//            // left
+//            holder.llContainer.setLayoutParams(getFrameLayoutParams(true));
+//            return;
+//        }
+//        if (location == 1){
+//            // center
+//            holder.llContainer.setLayoutParams(getFrameLayoutParams(null));
+//            return;
+//        }
+//        if (location == 2){
+//            // right
+//            holder.llContainer.setLayoutParams(getFrameLayoutParams(false));
+//            return;
+//        }
     }
 
     private FrameLayout.LayoutParams getFrameLayoutParams(Boolean left){
@@ -102,7 +102,7 @@ public class ShareGridAdapter extends RecyclerView.Adapter<ShareGridAdapter.View
             super(itemView);
             icon = (ImageView) itemView.findViewById(R.id.icon);
             text = (TextView) itemView.findViewById(R.id.text);
-            llContainer = (LinearLayout) itemView.findViewById(R.id.ll_container);
+//            llContainer = (LinearLayout) itemView.findViewById(R.id.ll_container);
         }
     }
 }

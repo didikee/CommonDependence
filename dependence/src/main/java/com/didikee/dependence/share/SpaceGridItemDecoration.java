@@ -33,48 +33,91 @@ public class SpaceGridItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State
             state) {
-        super.getItemOffsets(outRect, view, parent, state);
+//        super.getItemOffsets(outRect, view, parent, state);
         if (grid == 0)return;
-        int childCount = parent.getChildCount();
+        int childCount = parent.getLayoutManager().getItemCount();
         int childLayoutPosition = parent.getChildLayoutPosition(view);
         if (childLayoutPosition < grid) {
             //顶部
             if (space != 0) {
-                outRect.left = space;
-                outRect.right = space;
                 outRect.bottom = space;
             } else {
-                outRect.left = left;
-                outRect.right = right;
                 outRect.bottom = bottom;
             }
+            outRect.top = 0;
+            // 一行中的位置
+            int hLocation = childLayoutPosition % grid;
+            if ( hLocation ==0 ){
+                // 左
+                outRect.left = 0;
+                outRect.right = right;
+                return;
+            }
+            if (hLocation == (grid -1)){
+                //右
+                outRect.left = left;
+                outRect.right = 0;
+                return;
+            }
+            //中间
+            outRect.left = left;
+            outRect.right = right;
             return;
         }
         if (childCount - childLayoutPosition < grid){
             // 底部
             if (space != 0) {
-                outRect.left = space;
                 outRect.top = space;
-                outRect.right = space;
             } else {
-                outRect.left = left;
                 outRect.top = top;
-                outRect.right = right;
             }
+            outRect.bottom = 0;
+            // 一行中的位置
+            int hLocation = childLayoutPosition % grid;
+            if ( hLocation ==0 ){
+                // 左
+                outRect.left = 0;
+                outRect.right = right;
+                return;
+            }
+            if (hLocation == (grid -1)){
+                //右
+                outRect.left = left;
+                outRect.right = 0;
+                return;
+            }
+            //中间
+            outRect.left = left;
+            outRect.right = right;
             return;
         }
-
+        // 中间的items
         if (space != 0) {
-            outRect.left = space;
             outRect.top = space;
-            outRect.right = space;
             outRect.bottom = space;
         } else {
-            outRect.left = left;
             outRect.top = top;
-            outRect.right = right;
             outRect.bottom = bottom;
         }
+
+        // 一行中的位置
+        int hLocation = childLayoutPosition % grid;
+        if ( hLocation ==0 ){
+            // 左
+            outRect.left = 0;
+            outRect.right = right;
+            return;
+        }
+        if (hLocation == (grid -1)){
+            //右
+            outRect.left = left;
+            outRect.right = 0;
+            return;
+        }
+        //中间
+        outRect.left = left;
+        outRect.right = right;
+        return;
 
     }
 }

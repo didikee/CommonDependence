@@ -8,28 +8,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/md_normal_margin"
-        android:paddingRight="@dimen/md_normal_margin"
-        android:paddingTop="@dimen/md_normal_margin"
         android:paddingBottom="@dimen/dp24"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/md_item_normal_height"
+            android:layout_height="@dimen/md_item_large_height"
             android:background="#ffffff"
-            android:layout_marginLeft="@dimen/md_normal_margin"
-            android:layout_marginRight="@dimen/md_normal_margin"
+            android:paddingLeft="@dimen/dp24"
+            android:paddingRight="@dimen/dp24"
             android:gravity="left|center_vertical"
-            android:text="分享"
+            android:text="默认分享标题"
             android:lines="1"
+            android:textStyle="bold"
             android:ellipsize="end"
-            android:textColor="@color/BLACK"
-            android:textSize="22sp"/>
+            android:textColor="#252525"
+            android:textSize="20sp"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
+            android:paddingTop="@dimen/md_normal_margin"
+            android:paddingLeft="@dimen/md_normal_margin"
+            android:paddingRight="@dimen/md_normal_margin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

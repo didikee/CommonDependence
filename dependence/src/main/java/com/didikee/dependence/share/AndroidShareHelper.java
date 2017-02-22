@@ -112,14 +112,15 @@ public class AndroidShareHelper {
             throw new NullPointerException("you should declare a id named recyclerView in your " +
                     "bottomSheets layout!");
         }
-        int grid = 3;
+        int grid = 4;
         gridView.setLayoutManager(new GridLayoutManager(activity, grid));
         gridView.setNestedScrollingEnabled(false);
         gridView.setFocusable(false);
         gridView.setHasFixedSize(true);
-        int dp8 = DisplayUtil.dp2px(activity, 8);
-        SpaceGridItemDecoration spaceItemDecoration = new SpaceGridItemDecoration(grid, 0, dp8,
-                0, dp8);
+        int v = DisplayUtil.dp2px(activity, 3);
+        int h = DisplayUtil.dp2px(activity, 8);
+        SpaceGridItemDecoration spaceItemDecoration = new SpaceGridItemDecoration(grid, h, v,
+                h, v);
         ShareGridAdapter gridAdapter = new ShareGridAdapter();
         gridView.setAdapter(gridAdapter);
         gridView.addItemDecoration(spaceItemDecoration);
