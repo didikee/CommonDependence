@@ -14,7 +14,7 @@
 
 ## Usages
 
-** 默认分享**
+**默认分享**
 
 ```
 AndroidShareHelper shareDefault = new AndroidShareHelper();
