@@ -45,19 +45,20 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.share_1:
                 // 分享
-                AndroidShareHelper shareHelper1 = new AndroidShareHelper();
-                shareHelper1.shareDefaultText(this,"默认分享标题","title","content");
+                AndroidShareHelper shareDefault = new AndroidShareHelper();
+                shareDefault.shareDefaultText(this,"默认分享标题","title","content");
                 break;
             case R.id.share_2:
-                AndroidShareHelper shareHelper2 = new AndroidShareHelper();
-                shareHelper2.shareWithBottomSheets(this, R.layout
-                        .layout_bottomsheetsdialog, shareHelper2.getShareTextIntent("默认分享标题", "www.baidu.com/"));
+                AndroidShareHelper shareWithBottomSheetsDialog = new AndroidShareHelper();
+                shareWithBottomSheetsDialog.shareWithBottomSheets(this,
+                        R.layout.layout_bottomsheetsdialog,
+                        shareWithBottomSheetsDialog.getShareTextIntent("默认分享标题", "https://www.google.com.hk/?gws_rd=ssl"));
                 break;
             case R.id.toast_1:
                 UIToast.showToast(this, "Toast with theme color");
                 break;
             case R.id.toast_2:
-                UIToast.showToast(this, "Toast with custom color", true, Color.GREEN, Color.RED);
+                UIToast.showToast(this, "Toast with custom color", true, /*background color*/Color.GREEN, /*toast textColor*/Color.RED);
                 break;
         }
     }
