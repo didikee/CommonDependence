@@ -1,1 +1,1 @@
-include ':sample', ':didikee', ':dependence'
+include ':sample', ':didikee', ':core'

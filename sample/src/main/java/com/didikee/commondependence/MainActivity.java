@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.ScrollView;
 
 import com.didikee.dependence.share.AndroidShareHelper;
-import com.didikee.dependence.toast.UIToast;
+import com.didikee.dependence.toast.UIToast2;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
                         shareWithBottomSheetsDialog.getShareTextIntent("默认分享标题", "https://www.google.com.hk/?gws_rd=ssl"));
                 break;
             case R.id.toast_1:
-                UIToast.showToast(this, "Toast with theme color");
+                UIToast2.showToast(this, "Toast with theme color");
                 break;
             case R.id.toast_2:
-                UIToast.showToast(this, "Toast with custom color", true, /*background color*/Color.GREEN, /*toast textColor*/Color.RED);
+                UIToast2.showToast(this, "Toast with custom color", true, /*background color*/Color.GREEN, /*toast textColor*/Color.RED);
                 break;
         }
     }

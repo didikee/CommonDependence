@@ -15,12 +15,13 @@ import com.didikee.dependence.R;
 import com.didikee.uilibs.utils.DisplayUtil;
 
 /**
+ * @deprecated use UIToast instead {@link UIToast}
  * Created by didik 
  * Created time 2017/2/21
  * Description: 
  */
 
-public class UIToast {
+public class UIToast2 {
 
     public static void showToast(@NonNull Context context, String content) {
         showToast(context, content, false);
@@ -48,13 +49,6 @@ public class UIToast {
             toastView.setBackgroundDrawable(getToastBackground(context, toastBackgroundColor));
         }
         TextView textView = (TextView) toastView.findViewById(android.R.id.message);
-//        if ( Build.VERSION.SDK_INT >= 23){
-//            textView.setTextAppearance(R.style.AndroidToast);
-//        }else {
-//            textView.setTextAppearance(this,R.style.AndroidToast);
-//        }
-//        Typeface font = Typeface.createFromAsset(getAssets() "sans-serif-condensed.ttf");
-//        setTypeface(font);
         // 内部已经作非空判断了
         if (textColor!=0){
             textView.setTextColor(textColor);
